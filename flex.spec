@@ -9,7 +9,7 @@ Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.31
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
@@ -18,10 +18,10 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Source2:	%{name}-pl.po
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-skel.patch
-Patch2:		%{name}-glibc22.patch
-Patch3:		%{name}-locale.patch
-Patch4:		%{name}-yymore-fix.patch
+Patch1:		%{name}-glibc22.patch
+Patch2:		%{name}-locale.patch
+Patch3:		%{name}-yymore-fix.patch
+Patch4:		%{name}-yytext_ptr-undefined.patch
 URL:		http://lex.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	bison
@@ -114,6 +114,9 @@ flex був розроблений для роботи як з системою Yacc, так ╕ Bison, та
 
 cp -f %{SOURCE2} po/pl.po
 echo 'pl' >> po/LINGUAS
+
+# force regeneration (just in case make didn't want to)
+rm -f skel.c
 
 %build
 %{__autoconf}
