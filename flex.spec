@@ -2,13 +2,15 @@ Summary:	GNU fast lexical analyzer generator
 Summary(de):	GNU - schneller lexikalischer Analysegenerator
 Summary(fr):	GИnИrateur rapide d'analyseur lexical de GNU
 Summary(pl):	Szybki generator analizatora skЁadni GNU (flex)
+Summary(ru):	Быстрый генератор лексических анализаторов GNU
 Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
+Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.4a
-Release:	17
-License:	GPL
+Release:	18
+License:	BSD-like
 Group:		Development/Tools
-Source0:	ftp://prep.ai.mit.edu/pub/non-gnu/flex/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/non-gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
@@ -44,11 +46,39 @@ wyra©eЯ regularnych i dyrektyw C zawartych w jednym lub wiЙcej plikach
 wej╤ciowych. Przeznaczony do wspСЁpracy z parserami yacc i bison, jest
 u©ywany przez wiele programСw w procesie kompilacji.
 
+%description -l ru
+Программа flex генерирует сканнеры. Сканнеры - это программы, способные
+распознавать лексические шаблоны в тексте. flex принимает на входе пару
+регулярных выражений и C код и генерирует исходные файлы на языке C.
+Исходный файл компилируется и связывается с библиотекой для создания
+исполняемого файла, который будет просматривать свой входной поток
+данных в поиске регулярных выражений. При нахождении будет исполняться
+заданный C код. flex был разработан для работы как с системой Yacc, так
+и Bison, и используется многими программами как часть процесса их
+построения из исходных текстов.
+
+Вам следует установить flex, если вы собираетесь использовать свою
+систему для разработки программ.
+
 %description -l tr
 Bu paket, giriЧ olarak okuduПu bilgiyi kendisine dЭzgЭn deyimler
 olarak belirtilen kurallar ГerГevesinde birimlere bЖler. yacc ve bison
 paketleri ile birlikte ГalЩЧacak Чekilde tasarlanmЩЧtЩr. Pek Гok
 programЩn derlenme aЧamasЩnda kullanЩlЩr.
+
+%description -l uk
+Програма flex генеру╓ сканери. Сканери - це програми, як╕ можуть
+розп╕знавати лексичн╕ шаблони в текст╕. flex прийма╓ на вход╕ пару
+регулярних вираз╕в та C код та генеру╓ вих╕дн╕ файли на мов╕ C.
+Вих╕дний файл комп╕лю╓ться та зв'язу╓ться з б╕бл╕отекою для
+створення виконуваного файлу, що проглядатиме св╕й вх╕дний пот╕к
+даних в пошуку регулярних вираз╕в. При знаходженн╕ виконуватиметься
+заданий C код. flex був розроблений для роботи як з системою Yacc,
+так ╕ Bison, та використову╓ться багатьма програмами в процес╕ ╖х
+побудови з вих╕дних текст╕в.
+
+Вам сл╕д встановити flex, якщо ви збира╓тесь використовувати свою
+систему для розробки програм.
 
 %prep
 %setup -q -n %{name}-2.5.4
@@ -79,8 +109,6 @@ install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
-gzip -9nf NEWS README
-
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
@@ -96,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {NEWS,README}.gz
+%doc NEWS README COPYING
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %lang(es) %{_mandir}/es/man1/*
