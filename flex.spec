@@ -91,10 +91,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/flex*
 %{_libdir}/*.a
 %{_includedir}/*.h
-
-%changelog
-* Mon Jun 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [2.5.4a-9]
-- based on RH spec,
-- spec rewrited by PLD team,
-- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>.
