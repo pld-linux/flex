@@ -21,6 +21,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
 Patch3:		%{name}-locale.patch
+URL:		http://lex.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	gettext-devel
@@ -121,7 +122,8 @@ echo 'pl' >> po/LINGUAS
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
