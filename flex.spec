@@ -9,7 +9,7 @@ Release:	9
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narz璠zia
-Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Source:		ftp://prep.ai.mit.edu/pub/gnu/flex/%{name}-%{version}.tar.gz
 Patch0:		flex-info.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -57,7 +57,7 @@ makeinfo MISC/texinfo/flex.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{bin,share/info,include,share/man/man1}
+install -d $RPM_BUILD_ROOT{%{bindir},%{_infodir},%{_includedir},%{_mandir}/man1}
 
 install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
@@ -70,7 +70,7 @@ make install prefix=$RPM_BUILD_ROOT/usr \
 cd $RPM_BUILD_ROOT%{_bindir}
 ln -sf flex lex
 
-gzip -9nf $RPM_BUILD_ROOT/usr/share/{info/*,man/man1/*}
+gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man1/*}
 
 %post
 /sbin/install-info %{_infodir}/flex.info.gz /etc/info-dir
@@ -93,39 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*.h
 
 %changelog
-* Mon Jun 07 1999 Jan R瘯orajski <baggins@pld.org.pl>
+* Mon Jun 21 1999 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
   [2.5.4a-9]
-- spec cleanup
-
-* Tue Dec 29 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [2.5.4a-7]
-- added flex info pages and %post, %postun and
-  {un}registering info pages.
-
-* Mon Dec 28 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [2.5.4a-6]
-- added gzipping man pages,
-- LDFLAGS="-s" moved to make parameters.
-
-* Fri Sep 18 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [2.5.4a-5]
-- removed COPYING from %doc (copyright statment is in Copyright field),
-
-* Sun Jun 14 1998 Wojtek 奸usarczyk <wojtek@shadow.eu.org>
-  [2.5.4a-5]
-- added buildroot support,
-- build from non root's account,
-- minor modifications of spec file,
-- added pl translation (made by Piotr Dembi雟ki <hektor@kki.net.pl>).
-
-* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Thu Oct 23 1997 Donnie Barnes <djb@redhat.com>
-- updated from 2.5.4 to 2.5.4a
-
-* Mon Jun 02 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
-
-* Thu Mar 20 1997 Michael Fulbright <msf@redhat.com>
- Updated to v. 2.5.4
+- based on RH spec,
+- spec rewrited by PLD team,
+- pl translation by Wojtek 奸usarczyk <wojtek@shadow.eu.org>.
