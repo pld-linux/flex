@@ -60,7 +60,7 @@ makeinfo MISC/texinfo/flex.texi
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{bin,info,include,man/man1}
 
-install flex.info* $RPM_BUILD_ROOT/usr/info
+install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
 make prefix=$RPM_BUILD_ROOT/usr install
 cd $RPM_BUILD_ROOT/usr/bin
@@ -69,11 +69,11 @@ ln -sf flex lex
 gzip -9nf $RPM_BUILD_ROOT/usr/{info/*,man/man1/*}
 
 %post
-/sbin/install-info /usr/info/flex.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/flex.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete /usr/info/flex.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/flex.info.gz /etc/info-dir
 fi
 
 %clean
@@ -83,8 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README
 %attr(755,root,root) /usr/bin/*
-/usr/man/man1/*
-/usr/info/flex*
+%{_mandir}/man1/*
+%{_infodir}/flex*
 /usr/lib/*.a
 /usr/include/*.h
 
