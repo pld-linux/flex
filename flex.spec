@@ -8,20 +8,17 @@ Summary(ru):	Быстрый генератор лексических анализаторов GNU
 Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
-Version:	2.5.4a
-Release:	27
+Version:	2.5.31
+Release:	1
 License:	BSD-like
 Group:		Development/Tools
-Source0:	ftp://ftp.gnu.org/gnu/non-gnu/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5: bd8753d0b22e1f4ec87a553a73021adf
+Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
+# Source0-md5:	363dcc4afc917dc51306eb9d3de0152f
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
-# Source1-md5: fd79ee2834b290e74c626f0bbfc8942f
+# Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
-Patch3:		%{name}-%{version}_bufer_overflow.patch
-Patch4:		%{name}-gcc3.patch
-Patch5:		%{name}-gcc31.patch
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	texinfo
@@ -102,39 +99,29 @@ flex був розроблений для роботи як з системою Yacc, так ╕ Bison, та
 систему для розробки програм.
 
 %prep
-%setup -q -n %{name}-2.5.4
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %{__autoconf}
 %configure
-%{__make}
 
-makeinfo MISC/texinfo/flex.texi
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_includedir},%{_mandir}/man1}
 
-install flex.info* $RPM_BUILD_ROOT%{_infodir}
-
-%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
-	bindir=$RPM_BUILD_ROOT/%{_bindir} \
-	mandir=$RPM_BUILD_ROOT/%{_mandir}/man1 \
-	libdir=$RPM_BUILD_ROOT/%{_libdir} \
-	includedir=$RPM_BUILD_ROOT/%{_includedir} \
-	infodir=$RPM_BUILD_ROOT/%{_infodir}
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -145,9 +132,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc NEWS README COPYING
+%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %lang(es) %{_mandir}/es/man1/*

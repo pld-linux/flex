@@ -1,17 +1,14 @@
-diff -Nru flex-2.5.4/MISC/texinfo/flex.texi flex-2.5.4.new/MISC/texinfo/flex.texi
---- flex-2.5.4/MISC/texinfo/flex.texi	Sun Jul 27 04:47:21 1997
-+++ flex-2.5.4.new/MISC/texinfo/flex.texi	Thu Dec 31 12:54:53 1998
-@@ -15,9 +15,10 @@
- 
- @ifinfo
- @format
--START-INFO-DIR-ENTRY
--* Flex: (flex).         A fast scanner generator.
--END-INFO-DIR-ENTRY
+--- flex-2.5.31/doc/flex.texi.orig	2003-03-27 19:02:59.000000000 +0100
++++ flex-2.5.31/doc/flex.texi	2003-06-19 00:32:50.000000000 +0200
+@@ -7,9 +7,9 @@
+ @defindex hk
+ @c  "Options" index
+ @defindex op
+-@dircategory Programming
 +@dircategory Programming tools:
-+@direntry
-+* Flex: (flex).				A fast scanner generator
-+@end direntry
- @end format
- @end ifinfo
+ @direntry
+-* flex: (flex).      Fast lexical analyzer generator (lex replacement).
++* flex: (flex).				Fast lexical analyzer generator
+ @end direntry
+ @c %**end of header
  

@@ -1,108 +1,72 @@
---- flex-2.5.4/initscan.c.broken	Sat Sep 30 16:50:31 2000
-+++ flex-2.5.4/initscan.c	Sat Sep 30 16:51:34 2000
-@@ -10,7 +10,7 @@
- #define YY_FLEX_MINOR_VERSION 5
+diff -Nur flex-2.5.31.orig/flex.skl flex-2.5.31/flex.skl
+--- flex-2.5.31.orig/flex.skl	2003-04-01 03:51:38.000000000 +0200
++++ flex-2.5.31/flex.skl	2003-06-19 00:41:00.000000000 +0200
+@@ -1973,25 +1973,6 @@
+ }
  
- #include <stdio.h>
+ 
+-%if-c-only
+-m4_ifdef( [[M4_YY_ALWAYS_INTERACTIVE]],,
+-[[
+-    m4_ifdef( [[M4_YY_NEVER_INTERACTIVE]],,
+-    [[
+-#ifndef __cplusplus
+-extern int isatty M4_YY_PARAMS( int );
+-#endif /* __cplusplus */
+-    ]])
+-]])
+-%endif
 -
-+#include <unistd.h>
- 
- /* cfront 1.2 defines "c_plusplus" instead of "__cplusplus" */
- #ifdef c_plusplus
-@@ -23,7 +23,6 @@
- #ifdef __cplusplus
- 
- #include <stdlib.h>
--#include <unistd.h>
- 
- /* Use prototypes in function declarations. */
- #define YY_USE_PROTOS
-@@ -3310,12 +3309,6 @@
- 	yy_flex_free( (void *) b );
- 	}
- 
+-%if-c++-only
+-m4_ifdef( [[M4_YY_NEVER_INTERACTIVE]],,
+-[[
+-extern "C" int isatty M4_YY_PARAMS( int );
+-]])
+-%endif
 -
--#ifndef YY_ALWAYS_INTERACTIVE
--#ifndef YY_NEVER_INTERACTIVE
--extern int isatty YY_PROTO(( int ));
--#endif
--#endif
+ /* Initializes or reinitializes a buffer.
+  * This function is sometimes called more than once on the same buffer,
+  * such as during a yyrestart() or at EOF.
+diff -Nur flex-2.5.31.orig/scan.c flex-2.5.31/scan.c
+--- flex-2.5.31.orig/scan.c	2003-04-01 18:33:17.000000000 +0200
++++ flex-2.5.31/scan.c	2003-06-19 00:40:14.000000000 +0200
+@@ -3897,10 +3897,6 @@
+ 	yyfree((void *) b  );
+ }
  
- #ifdef YY_USE_PROTOS
- void yy_init_buffer( YY_BUFFER_STATE b, FILE *file )
---- flex-2.5.4/flex.skl.broken	Sat Sep 30 16:51:05 2000
-+++ flex-2.5.4/flex.skl	Sat Sep 30 16:52:24 2000
-@@ -10,6 +10,7 @@
- 
- %-
- #include <stdio.h>
-+#include <unistd.h>
- %*
- 
- 
-@@ -27,7 +28,6 @@
- %+
- class istream;
- %*
--#include <unistd.h>
- 
- /* Use prototypes in function declarations. */
- #define YY_USE_PROTOS
-@@ -1177,11 +1177,6 @@
- 
- 
- %-
--#ifndef YY_ALWAYS_INTERACTIVE
--#ifndef YY_NEVER_INTERACTIVE
--extern int isatty YY_PROTO(( int ));
--#endif
--#endif
- 
- #ifdef YY_USE_PROTOS
- void yy_init_buffer( YY_BUFFER_STATE b, FILE *file )
-@@ -1192,7 +1187,6 @@
- #endif
- 
- %+
--extern "C" int isatty YY_PROTO(( int ));
- void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, istream* file )
- %*
- 
---- flex-2.5.4/skel.c.broken	Sat Sep 30 16:52:34 2000
-+++ flex-2.5.4/skel.c	Sat Sep 30 16:53:15 2000
-@@ -15,6 +15,7 @@
-   "",
-   "%-",
-   "#include <stdio.h>",
-+  "#include <unistd.h>",
-   "%*",
+-#ifndef __cplusplus
+-extern int isatty (int );
+-#endif /* __cplusplus */
+-    
+ /* Initializes or reinitializes a buffer.
+  * This function is sometimes called more than once on the same buffer,
+  * such as during a yyrestart() or at EOF.
+diff -Nur flex-2.5.31.orig/skel.c flex-2.5.31/skel.c
+--- flex-2.5.31.orig/skel.c	2003-06-19 00:31:34.000000000 +0200
++++ flex-2.5.31/skel.c	2003-06-19 00:41:37.000000000 +0200
+@@ -2176,25 +2176,6 @@
+   "}",
    "",
    "",
-@@ -32,7 +33,6 @@
-   "%+",
-   "class istream;",
-   "%*",
--  "#include <unistd.h>",
-   "",
-   "/* Use prototypes in function declarations. */",
-   "#define YY_USE_PROTOS",
-@@ -1182,11 +1182,6 @@
-   "",
-   "",
-   "%-",
--  "#ifndef YY_ALWAYS_INTERACTIVE",
--  "#ifndef YY_NEVER_INTERACTIVE",
--  "extern int isatty YY_PROTO(( int ));",
--  "#endif",
--  "#endif",
-   "",
-   "#ifdef YY_USE_PROTOS",
-   "void yy_init_buffer( YY_BUFFER_STATE b, FILE *file )",
-@@ -1197,7 +1192,6 @@
-   "#endif",
-   "",
-   "%+",
--  "extern \"C\" int isatty YY_PROTO(( int ));",
-   "void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, istream* file )",
-   "%*",
-   "",
+-  "%if-c-only",
+-  "m4_ifdef( [[M4_YY_ALWAYS_INTERACTIVE]],,",
+-  "[[",
+-  "    m4_ifdef( [[M4_YY_NEVER_INTERACTIVE]],,",
+-  "    [[",
+-  "#ifndef __cplusplus",
+-  "extern int isatty M4_YY_PARAMS( int );",
+-  "#endif /* __cplusplus */",
+-  "    ]])",
+-  "]])",
+-  "%endif",
+-  "",
+-  "%if-c++-only",
+-  "m4_ifdef( [[M4_YY_NEVER_INTERACTIVE]],,",
+-  "[[",
+-  "extern \"C\" int isatty M4_YY_PARAMS( int );",
+-  "]])",
+-  "%endif",
+-  "",
+   "/* Initializes or reinitializes a buffer.",
+   " * This function is sometimes called more than once on the same buffer,",
+   " * such as during a yyrestart() or at EOF.",
