@@ -5,7 +5,7 @@ Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	8
+Release:	9
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
@@ -49,24 +49,28 @@ aþamasýnda kullanýlýr.
 %patch0 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=/usr
+autoconf
+%configure
 make
 
 makeinfo MISC/texinfo/flex.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{bin,info,include,man/man1}
+install -d $RPM_BUILD_ROOT/usr/{bin,share/info,include,share/man/man1}
 
 install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
-make prefix=$RPM_BUILD_ROOT/usr install
+make install prefix=$RPM_BUILD_ROOT/usr \
+	bindir=$RPM_BUILD_ROOT/%{_bindir} \
+	mandir=$RPM_BUILD_ROOT/%{_mandir}/man1 \
+	libdir=$RPM_BUILD_ROOT/%{_libdir} \
+	includedir=$RPM_BUILD_ROOT/%{_includedir} \
+	infodir=$RPM_BUILD_ROOT/%{_infodir}
 cd $RPM_BUILD_ROOT%{_bindir}
 ln -sf flex lex
 
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/*,man/man1/*}
+gzip -9nf $RPM_BUILD_ROOT/usr/share/{info/*,man/man1/*}
 
 %post
 /sbin/install-info %{_infodir}/flex.info.gz /etc/info-dir
@@ -89,6 +93,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*.h
 
 %changelog
+* Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
+  [2.5.4a-9]
+- spec cleanup
+
 * Tue Dec 29 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.5.4a-7]
 - added flex info pages and %post, %postun and
