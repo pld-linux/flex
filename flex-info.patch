@@ -1,0 +1,17 @@
+diff -Nru flex-2.5.4/MISC/texinfo/flex.texi flex-2.5.4.new/MISC/texinfo/flex.texi
+--- flex-2.5.4/MISC/texinfo/flex.texi	Sun Jul 27 04:47:21 1997
++++ flex-2.5.4.new/MISC/texinfo/flex.texi	Thu Dec 31 12:54:53 1998
+@@ -15,9 +15,10 @@
+ 
+ @ifinfo
+ @format
+-START-INFO-DIR-ENTRY
+-* Flex: (flex).         A fast scanner generator.
+-END-INFO-DIR-ENTRY
++@dircategory Programming tools:
++@direntry
++* Flex: (flex)				A fast scanner generator.
++@end direntry
+ @end format
+ @end ifinfo
+ 
