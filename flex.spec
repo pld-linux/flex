@@ -22,6 +22,7 @@ Patch4:		%{name}-gcc3.patch
 Patch5:		%{name}-gcc31.patch
 BuildRequires:	autoconf
 BuildRequires:	bison
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
