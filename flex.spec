@@ -53,7 +53,6 @@ programýn derlenme aþamasýnda kullanýlýr.
 
 %build
 autoconf
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 
@@ -74,8 +73,7 @@ install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
-gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man1/*} \
-	NEWS README
+gzip -9nf NEWS README
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
