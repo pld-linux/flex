@@ -9,7 +9,7 @@ Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.31
-Release:	8
+Release:	9
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
