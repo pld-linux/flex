@@ -10,7 +10,8 @@ Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://prep.ai.mit.edu/pub/gnu/flex/%{name}-%{version}.tar.gz
-Patch0:		flex-info.patch
+Patch:		flex-info.patch
+Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -46,7 +47,7 @@ aþamasýnda kullanýlýr.
 
 %prep
 %setup -q -n %{name}-2.5.4
-%patch0 -p1
+%patch -p1
 
 %build
 autoconf
@@ -71,22 +72,21 @@ make install prefix=$RPM_BUILD_ROOT%{_prefix} \
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
-gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man1/*}
+gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man1/*} \
+	NEWS README
 
 %post
-/sbin/install-info %{_infodir}/flex.info.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %preun
-if [ "$1" = "0" ]; then
-	/sbin/install-info --delete %{_infodir}/flex.info.gz /etc/info-dir
-fi
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README
+%doc {NEWS,README}.gz
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_infodir}/flex*
