@@ -25,6 +25,7 @@ BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	gettext-devel
 BuildRequires:	texinfo
+BuildRequires:	help2man
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
