@@ -1,7 +1,7 @@
 Summary:	GNU fast lexical analyzer generator
 Summary(de):	GNU - schneller lexikalischer Analysegenerator 
 Summary(fr):	Générateur rapide d'analyseur lexical de GNU
-Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
+Summary(pl):	Szybki generator analizatora sk³adni GNU (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
@@ -15,6 +15,7 @@ Source0:	ftp://prep.ai.mit.edu/pub/non-gnu/flex/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
+BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -80,14 +81,14 @@ ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
 gzip -9nf NEWS README
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
