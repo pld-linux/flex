@@ -13,7 +13,9 @@ Release:	27
 License:	BSD-like
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/non-gnu/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	bd8753d0b22e1f4ec87a553a73021adf
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
+# Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
