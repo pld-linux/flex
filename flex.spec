@@ -1,13 +1,15 @@
 Summary:	GNU fast lexical analyzer generator
 Summary(de):	GNU - schneller lexikalischer Analysegenerator
+Summary(es):	Generador rАpido de analizadores lИxicos de la GNU
 Summary(fr):	GИnИrateur rapide d'analyseur lexical de GNU
 Summary(pl):	Szybki generator analizatora skЁadni GNU (flex)
+Summary(pt_BR):	Gerador rАpido de analisadores lИxicos da GNU
 Summary(ru):	Быстрый генератор лексических анализаторов GNU
 Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.4a
-Release:	18
+Release:	27
 License:	BSD-like
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/non-gnu/%{name}/%{name}-%{version}.tar.gz
@@ -16,6 +18,8 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
 Patch3:		%{name}-%{version}_bufer_overflow.patch
+Patch4:		%{name}-gcc3.patch
+Patch5:		%{name}-gcc31.patch
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,6 +37,13 @@ Beschreibung (regulДre Ausdrucksbasis) der Eingabe. Ausgelegt zum
 Arbeiten mit yacc und bison, wird er von vielen Programmen als Teil
 des Build-Vorgangs verwendet.
 
+%description -l es
+Este es el creador GNU de anАlisis lИxica rАpida. Crea cСdigos lИxicos
+tokenizados basados en una descripciСn lИxica (basado en expresiones
+regulares) de la entrada. EstА designado a trabajar tanto con yacc
+como con bison, y se utiliza en varios programas como parte del su
+proceso de programaciСn.
+
 %description -l fr
 GИnИrateur rapide d'analyseur lexical de GNU. Il gИnХre du code
 lexical sous forme de tokens basИ sur une description lexicale (basИ
@@ -46,16 +57,23 @@ wyra©eЯ regularnych i dyrektyw C zawartych w jednym lub wiЙcej plikach
 wej╤ciowych. Przeznaczony do wspСЁpracy z parserami yacc i bison, jest
 u©ywany przez wiele programСw w procesie kompilacji.
 
+%description -l pt_BR
+Este И o gerador GNU de anАlise lИxica rАpida. Ele gera cСdigos
+lИxicos tokenizados baseados em uma descriГЦo lИxica (baseado em
+expressУes regulares) da entrada. Ele И designado para trabalhar tanto
+com yacc como com bison, e И utilizado em vАrios programas como parte
+do seu processo de programaГЦo.
+
 %description -l ru
-Программа flex генерирует сканнеры. Сканнеры - это программы, способные
-распознавать лексические шаблоны в тексте. flex принимает на входе пару
-регулярных выражений и C код и генерирует исходные файлы на языке C.
-Исходный файл компилируется и связывается с библиотекой для создания
-исполняемого файла, который будет просматривать свой входной поток
-данных в поиске регулярных выражений. При нахождении будет исполняться
-заданный C код. flex был разработан для работы как с системой Yacc, так
-и Bison, и используется многими программами как часть процесса их
-построения из исходных текстов.
+Программа flex генерирует сканнеры. Сканнеры - это программы,
+способные распознавать лексические шаблоны в тексте. flex принимает на
+входе пару регулярных выражений и C код и генерирует исходные файлы на
+языке C. Исходный файл компилируется и связывается с библиотекой для
+создания исполняемого файла, который будет просматривать свой входной
+поток данных в поиске регулярных выражений. При нахождении будет
+исполняться заданный C код. flex был разработан для работы как с
+системой Yacc, так и Bison, и используется многими программами как
+часть процесса их построения из исходных текстов.
 
 Вам следует установить flex, если вы собираетесь использовать свою
 систему для разработки программ.
@@ -70,12 +88,12 @@ programЩn derlenme aЧamasЩnda kullanЩlЩr.
 Програма flex генеру╓ сканери. Сканери - це програми, як╕ можуть
 розп╕знавати лексичн╕ шаблони в текст╕. flex прийма╓ на вход╕ пару
 регулярних вираз╕в та C код та генеру╓ вих╕дн╕ файли на мов╕ C.
-Вих╕дний файл комп╕лю╓ться та зв'язу╓ться з б╕бл╕отекою для
-створення виконуваного файлу, що проглядатиме св╕й вх╕дний пот╕к
-даних в пошуку регулярних вираз╕в. При знаходженн╕ виконуватиметься
-заданий C код. flex був розроблений для роботи як з системою Yacc,
-так ╕ Bison, та використову╓ться багатьма програмами в процес╕ ╖х
-побудови з вих╕дних текст╕в.
+Вих╕дний файл комп╕лю╓ться та зв'язу╓ться з б╕бл╕отекою для створення
+виконуваного файлу, що проглядатиме св╕й вх╕дний пот╕к даних в пошуку
+регулярних вираз╕в. При знаходженн╕ виконуватиметься заданий C код.
+flex був розроблений для роботи як з системою Yacc, так ╕ Bison, та
+використову╓ться багатьма програмами в процес╕ ╖х побудови з вих╕дних
+текст╕в.
 
 Вам сл╕д встановити flex, якщо ви збира╓тесь використовувати свою
 систему для розробки програм.
@@ -86,6 +104,8 @@ programЩn derlenme aЧamasЩnda kullanЩlЩr.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__autoconf}
