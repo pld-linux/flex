@@ -5,7 +5,7 @@ Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	9
+Release:	10
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
@@ -50,6 +50,7 @@ aþamasýnda kullanýlýr.
 
 %build
 autoconf
+LDFLAGS="-s"; export LDFLAGS
 %configure
 make
 
