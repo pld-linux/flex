@@ -1,0 +1,10 @@
+--- flex-2.5.31/flex.skl.orig	Tue Jul 15 13:37:22 2003
++++ flex-2.5.31/flex.skl	Tue Jul 15 15:44:08 2003
+@@ -3261,7 +3261,6 @@
+ #undef yy_set_bol
+ #undef yy_new_buffer
+ #undef yy_set_interactive
+-#undef yytext_ptr
+ #undef YY_DO_BEFORE_ACTION
+ 
+ #ifdef YY_DECL_IS_OURS
