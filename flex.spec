@@ -5,7 +5,7 @@ Summary(pl):	Szybki generator analizatora sk³adni GNU (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	16
+Release:	17
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://prep.ai.mit.edu/pub/non-gnu/flex/%{name}-%{version}.tar.gz
@@ -13,6 +13,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
+Patch3:		%{name}-%{version}_bufer_overflow.patch
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,6 +55,7 @@ programýn derlenme aþamasýnda kullanýlýr.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__autoconf}
