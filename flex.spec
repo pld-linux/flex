@@ -14,6 +14,7 @@ Source0:	ftp://prep.ai.mit.edu/pub/gnu/flex/%{name}-%{version}.tar.gz
 Patch0:		flex-info.patch
 Patch1:		flex-skel.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	bison
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
