@@ -26,6 +26,7 @@ Patch5:		%{name}-m4-quotes.diff
 Patch6:		%{name}-m4-quotes-codeblock.patch
 URL:		http://lex.sf.net/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	gettext-devel
 BuildRequires:	help2man
@@ -124,6 +125,7 @@ echo 'pl' >> po/LINGUAS
 rm -f skel.c
 
 %build
+cp -f /usr/share/automake/config.sub .
 %{__autoconf}
 %configure
 
