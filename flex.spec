@@ -5,7 +5,7 @@ Summary(pl): GNU szybki generator analizatora sk³adni (flex)
 Summary(tr): GNU sözdizim çözümleyici
 Name:        flex
 Version:     2.5.4a
-Release:     5
+Release:     6
 Copyright:   GPL
 Group:       Development/Tools
 Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
@@ -46,16 +46,20 @@ aþamasýnda kullanýlýr.
 %setup -q -n %{name}-2.5.4
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" ./configure --prefix=/usr
-make
+CFLAGS="$RPM_OPT_FLAGS" \
+./configure \
+	--prefix=/usr
+make LDFLAGS="-s"
 
 %install
-install -d $RPM_BUILD_ROOT/usr/{bin,include,man/man1}}
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/usr/{bin,include,man/man1}
 
 make prefix=$RPM_BUILD_ROOT/usr install
-strip $RPM_BUILD_ROOT/usr/bin/* || :
 cd $RPM_BUILD_ROOT/usr/bin
 ln -sf flex lex
+
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/*
 
 %files
 %defattr(644, root, root, 755)
@@ -69,12 +73,16 @@ ln -sf flex lex
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Dec 28 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [2.5.4a-6]
+- added gzipping man pages,
+- LDFLAGS="-s" moved to make parameters.
+
 * Fri Sep 18 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [2.5.4-5]
+  [2.5.4a-5]
 - removed COPYING from %doc (copyright statment is in Copyright field),
 
 * Sun Jun 14 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [2.5.4-5]
 - added buildroot support,
 - build from non root's account,
 - minor modifications of spec file,
@@ -82,7 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 
 * Mon Apr 27 1998 Prospector System <bugs@redhat.com>
 - translations modified for de, fr, tr
-
 
 * Thu Oct 23 1997 Donnie Barnes <djb@redhat.com>
 - updated from 2.5.4 to 2.5.4a
