@@ -57,18 +57,18 @@ makeinfo MISC/texinfo/flex.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{bindir},%{_infodir},%{_includedir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_includedir},%{_mandir}/man1}
 
 install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
-make install prefix=$RPM_BUILD_ROOT/usr \
+make install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT/%{_bindir} \
 	mandir=$RPM_BUILD_ROOT/%{_mandir}/man1 \
 	libdir=$RPM_BUILD_ROOT/%{_libdir} \
 	includedir=$RPM_BUILD_ROOT/%{_includedir} \
 	infodir=$RPM_BUILD_ROOT/%{_infodir}
-cd $RPM_BUILD_ROOT%{_bindir}
-ln -sf flex lex
+
+ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/*,%{_mandir}/man1/*}
 
