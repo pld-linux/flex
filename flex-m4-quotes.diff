@@ -1,0 +1,33 @@
+--- flex-2.5.31/flex.skl	2003-04-01 04:51:38.000000000 +0300
++++ flex/flex.skl	2003-10-24 21:47:10.000000000 +0300
+@@ -27,6 +27,11 @@
+ %# Macros for runtime processing stage.
+ m4_changecom
+ m4_changequote
++
++%# Let user use our quoting strings
++m4_changequote({, })
++m4_define( {m4_userquote_start}, {m4_changequote(<, >)[[m4_changequote([[, ]])})
++m4_define( {m4_userquote_end}, {m4_changequote(<, >)]]m4_changequote([[, ]])})
+ m4_changequote([[, ]])
+ 
+ %# 
+--- flex-2.5.31/scan.l	2003-04-01 04:51:38.000000000 +0300
++++ flex/scan.l	2003-10-24 21:51:20.000000000 +0300
+@@ -194,8 +194,14 @@
+ <COMMENT>{
+ 	"*/"		ACTION_ECHO; yy_pop_state();
+ 	"*"		ACTION_ECHO;
+-	[^*\n]+		ACTION_ECHO;
+-	[^*\n]*{NL}	++linenum; ACTION_ECHO;
++	[\[\]]		ACTION_ECHO;
++	[^*\[\]\n]+	ACTION_ECHO;
++	[^*\[\]\n]*{NL}	++linenum; ACTION_ECHO;
++	\[\[		add_action("[" "[]" "]m4_" "userquote_start()");
++	\]\]		add_action("[" "[]" "]m4_" "userquote_end()");
++			/* Macros need to be clearly separated from surrounding
++			 * text and this file needs to go through flex untouched.
++			 */
+ }
+ 
+ <LINEDIR>{
