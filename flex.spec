@@ -4,11 +4,11 @@ Summary(fr): Générateur rapide d'analyseur lexical de GNU
 Summary(pl): GNU szybki generator analizatora sk³adni (flex)
 Summary(tr): GNU sözdizim çözümleyici
 Name:        flex
-Version:     2.5.4
+Version:     2.5.4a
 Release:     5
 Copyright:   GPL
 Group:       Development/Tools
-Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}a.tar.gz
+Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
 Buildroot:   /tmp/%{name}-%{version}-root
 
 %description
@@ -43,7 +43,7 @@ ile birlikte çalýþacak þekilde tasarlanmýþtýr. Pek çok programýn derlenme
 aþamasýnda kullanýlýr.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-2.5.4
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" ./configure --prefix=/usr
