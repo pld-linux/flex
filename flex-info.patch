@@ -10,7 +10,7 @@ diff -Nru flex-2.5.4/MISC/texinfo/flex.texi flex-2.5.4.new/MISC/texinfo/flex.tex
 -END-INFO-DIR-ENTRY
 +@dircategory Programming tools:
 +@direntry
-+* Flex: (flex)				A fast scanner generator.
++* Flex: (flex).				A fast scanner generator
 +@end direntry
  @end format
  @end ifinfo
