@@ -85,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 %{_mandir}/man1/*
 %{_infodir}/flex*
-/usr/lib/*.a
+%{_libdir}/*.a
 /usr/include/*.h
 
 %changelog
