@@ -5,13 +5,14 @@ Summary(pl):	Szybki generator analizatora sk³adni GNU (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	15
+Release:	16
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://prep.ai.mit.edu/pub/non-gnu/flex/%{name}-%{version}.tar.gz
+Source1:	%{name}-non-english-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
@@ -81,6 +82,10 @@ ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
 gzip -9nf NEWS README
 
+echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++
+echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -95,6 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc {NEWS,README}.gz
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+%lang(es) %{_mandir}/es/man1/*
+%lang(ja) %{_mandir}/ja/man1/*
+%lang(pl) %{_mandir}/pl/man1/*
 %{_infodir}/flex*
 %{_libdir}/*.a
 %{_includedir}/*.h
