@@ -1,0 +1,10 @@
+--- flex-2.5.31/main.c.orig	2003-04-01 03:51:38.000000000 +0200
++++ flex-2.5.31/main.c	2003-06-19 03:44:52.000000000 +0200
+@@ -198,6 +198,7 @@
+      char   *argv[];
+ {
+ #if ENABLE_NLS
++	setlocale (LC_CTYPE, "");
+ 	setlocale (LC_MESSAGES, "");
+ 	textdomain (PACKAGE);
+ 	bindtextdomain (PACKAGE, LOCALEDIR);
