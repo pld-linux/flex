@@ -28,6 +28,7 @@ BuildRequires:	bison
 BuildRequires:	gettext-devel
 BuildRequires:	help2man
 BuildRequires:	texinfo
+BuildRequires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
