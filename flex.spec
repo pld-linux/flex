@@ -1,16 +1,16 @@
-Summary:     GNU fast lexical analyzer generator
-Summary(de): GNU - schneller lexikalischer Analysegenerator 
-Summary(fr): Générateur rapide d'analyseur lexical de GNU
-Summary(pl): GNU szybki generator analizatora sk³adni (flex)
-Summary(tr): GNU sözdizim çözümleyici
-Name:        flex
-Version:     2.5.4a
-Release:     7
-Copyright:   GPL
-Group:       Development/Tools
-Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Patch0:      flex-info.patch
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	GNU fast lexical analyzer generator
+Summary(de):	GNU - schneller lexikalischer Analysegenerator 
+Summary(fr):	Générateur rapide d'analyseur lexical de GNU
+Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
+Summary(tr):	GNU sözdizim çözümleyici
+Name:		flex
+Version:	2.5.4a
+Release:	8
+Copyright:	GPL
+Group:		Development/Tools
+Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Patch0:		flex-info.patch
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
@@ -71,18 +71,18 @@ gzip -9nf $RPM_BUILD_ROOT/usr/{info/*,man/man1/*}
 /sbin/install-info /usr/info/flex.info.gz /etc/info-dir
 
 %preun
-if [ $1 = 0 ]; then
-        /sbin/install-info --delete /usr/info/flex.info.gz /etc/info-dir
+if [ "$1" = "0" ]; then
+	/sbin/install-info --delete /usr/info/flex.info.gz /etc/info-dir
 fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc NEWS README
-%attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man1/*
+%attr(755,root,root) /usr/bin/*
+/usr/man/man1/*
 /usr/info/flex*
 /usr/lib/*.a
 /usr/include/*.h
