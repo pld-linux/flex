@@ -65,7 +65,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_includedir},%{_mandir}/man1
 
 install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
-make install prefix=$RPM_BUILD_ROOT%{_prefix} \
+%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT/%{_bindir} \
 	mandir=$RPM_BUILD_ROOT/%{_mandir}/man1 \
 	libdir=$RPM_BUILD_ROOT/%{_libdir} \
