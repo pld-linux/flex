@@ -8,6 +8,7 @@ Version:	2.5.4a
 Release:	8
 Copyright:	GPL
 Group:		Development/Tools
+Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
 Patch0:		flex-info.patch
 Buildroot:	/tmp/%{name}-%{version}-root
