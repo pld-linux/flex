@@ -129,7 +129,6 @@ echo 'pl' >> po/LINGUAS
 rm -f skel.c
 
 %build
-#cp -f /usr/share/automake/config.sub .
 %{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
