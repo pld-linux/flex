@@ -9,7 +9,7 @@ Summary(tr):	GNU sözdizim çözümleyici
 Summary(uk):	û×ÉÄËÉÊ ÇÅÎÅÒÁÔÏÒ ÌÅËÓÉÞÎÉÈ ÁÎÁÌ¦ÚÁÔÏÒ¦× GNU
 Name:		flex
 Version:	2.5.31
-Release:	6
+Release:	7
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
@@ -138,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
+ln -sf flex $RPM_BUILD_ROOT%{_bindir}/flex++
 
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++.1
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex.1
