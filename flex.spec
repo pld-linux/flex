@@ -1,5 +1,5 @@
 Summary:	GNU fast lexical analyzer generator
-Summary(de):	GNU - schneller lexikalischer Analysegenerator 
+Summary(de):	GNU - schneller lexikalischer Analysegenerator
 Summary(fr):	Générateur rapide d'analyseur lexical de GNU
 Summary(pl):	Szybki generator analizatora sk³adni GNU (flex)
 Summary(tr):	GNU sözdizim çözümleyici
