@@ -27,12 +27,12 @@ Patch5:		%{name}-m4-quotes.diff
 # based on patch #903352
 Patch6:		%{name}-posix.patch
 URL:		http://lex.sf.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	bison
 # m4-quotes* patches require rebuilding *.c from scan.l
 BuildRequires:	flex
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	help2man
 BuildRequires:	texinfo
 BuildRequires:	util-linux
@@ -129,8 +129,12 @@ echo 'pl' >> po/LINGUAS
 rm -f skel.c
 
 %build
-cp -f /usr/share/automake/config.sub .
+#cp -f /usr/share/automake/config.sub .
+%{__gettextize}
+%{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
 
 %{__make}
