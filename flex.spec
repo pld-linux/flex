@@ -63,7 +63,7 @@ install -d $RPM_BUILD_ROOT/usr/{bin,info,include,man/man1}
 install flex.info* $RPM_BUILD_ROOT%{_infodir}
 
 make prefix=$RPM_BUILD_ROOT/usr install
-cd $RPM_BUILD_ROOT/usr/bin
+cd $RPM_BUILD_ROOT%{_bindir}
 ln -sf flex lex
 
 gzip -9nf $RPM_BUILD_ROOT/usr/{info/*,man/man1/*}
@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS README
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_infodir}/flex*
 %{_libdir}/*.a
