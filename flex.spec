@@ -13,7 +13,7 @@ Source:		ftp://prep.ai.mit.edu/pub/gnu/flex/%{name}-%{version}.tar.gz
 Patch0:		flex-info.patch
 Patch1:		flex-skel.patch
 Prereq:		/usr/sbin/fix-info-dir
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
