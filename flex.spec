@@ -5,7 +5,7 @@ Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	14
+Release:	15
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -15,8 +15,8 @@ Source0:	ftp://prep.ai.mit.edu/pub/non-gnu/flex/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-skel.patch
 Patch2:		%{name}-glibc22.patch
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	bison
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
