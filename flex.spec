@@ -9,7 +9,7 @@ Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.31
-Release:	7
+Release:	8
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
@@ -22,8 +22,10 @@ Patch1:		%{name}-glibc22.patch
 Patch2:		%{name}-locale.patch
 Patch3:		%{name}-yymore-fix.patch
 Patch4:		%{name}-yytext_ptr-undefined.patch
+# patch #869230 (second version of bug #720983 fix)
 Patch5:		%{name}-m4-quotes.diff
-Patch6:		%{name}-m4-quotes-codeblock.patch
+# based on patch #903352
+Patch6:		%{name}-posix.patch
 URL:		http://lex.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
