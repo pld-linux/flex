@@ -28,6 +28,8 @@ URL:		http://lex.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
+# m4-quotes* patches require rebuilding *.c from scan.l
+BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	help2man
 BuildRequires:	texinfo
