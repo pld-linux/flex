@@ -132,8 +132,8 @@ rm -rf $RPM_BUILD_ROOT
 
 ln -sf flex $RPM_BUILD_ROOT%{_bindir}/lex
 
-echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++
-echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex
+echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++.1
+echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex.1
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %find_lang %{name}
