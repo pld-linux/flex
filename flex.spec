@@ -5,12 +5,13 @@ Summary(pl):	GNU szybki generator analizatora sk³adni (flex)
 Summary(tr):	GNU sözdizim çözümleyici
 Name:		flex
 Version:	2.5.4a
-Release:	10
+Release:	11
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://prep.ai.mit.edu/pub/gnu/flex/%{name}-%{version}.tar.gz
-Patch:		flex-info.patch
+Patch0:		flex-info.patch
+Patch1:		flex-skel.patch
 Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -36,7 +37,7 @@ faisant partie de leur phase de construction.
 %description -l pl
 GNU flex s³u¿y do tworzenia programu analizy leksykalnej na podstawie
 wyra¿eñ regularnych i dyrektyw C zawartych w jednym lub wiêcej plikach
-wej¶ciowych.  Przeznaczony do wspó³pracy z parserami yacc i bison, jest
+wej¶ciowych. Przeznaczony do wspó³pracy z parserami yacc i bison, jest
 u¿ywany przez wiele programów w procesie kompilacji.
 
 %description -l tr
