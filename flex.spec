@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_infodir}/flex*
 %{_libdir}/*.a
-/usr/include/*.h
+%{_includedir}/*.h
 
 %changelog
 * Tue Dec 29 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
