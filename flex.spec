@@ -55,7 +55,7 @@ programýn derlenme aþamasýnda kullanýlýr.
 autoconf
 LDFLAGS="-s"; export LDFLAGS
 %configure
-make
+%{__make}
 
 makeinfo MISC/texinfo/flex.texi
 
