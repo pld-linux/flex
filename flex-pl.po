@@ -1,13 +1,13 @@
 # Polish translation for flex.
 # Copyright (C) 2003 Free Software Foundation, Inc.
-# Jakub Bogusz <qboosh@pld.org.pl>, 2003.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flex 2.5.31\n"
 "POT-Creation-Date: 2003-04-01 11:33-0500\n"
 "PO-Revision-Date: 2003-06-19 00:44+0200\n"
-"Last-Translator: Jakub Bogusz <qboosh@pld.org.pl>\n"
+"Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
@@ -515,8 +515,7 @@ msgid ""
 "  -S, --skel=FILE         specify skeleton file\n"
 "  -t, --stdout            write scanner on stdout instead of %s\n"
 "      --yyclass=NAME      name of C++ class\n"
-"      --header-file=FILE   create a C header file in addition to the "
-"scanner\n"
+"      --header-file=FILE   create a C header file in addition to the scanner\n"
 "      --tables-file[=FILE] write tables to FILE\n"
 "\n"
 "Scanner behavior:\n"
