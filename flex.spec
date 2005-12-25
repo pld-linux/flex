@@ -9,7 +9,7 @@ Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.31
-Release:	9
+Release:	10
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
@@ -112,6 +112,17 @@ flex був розроблений для роботи як з системою Yacc, так ╕ Bison, та
 Вам сл╕д встановити flex, якщо ви збира╓тесь використовувати свою
 систему для розробки програм.
 
+%package examples
+Summary:	Flex examples
+Summary(pl):	PrzykЁady dla fleksa
+Group:		Development/Tools
+
+%description examples
+Flex examples.
+
+%description examples -l pl
+PrzykЁady dla fleksa.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -141,6 +152,8 @@ rm -f skel.c
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -150,6 +163,8 @@ ln -sf flex $RPM_BUILD_ROOT%{_bindir}/flex++
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++.1
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex.1
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
+cp -Rf examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %find_lang %{name}
 
@@ -173,3 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/flex*
 %{_libdir}/*.a
 %{_includedir}/*.h
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
