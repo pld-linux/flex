@@ -12,3 +12,32 @@
  @end direntry
  @c %**end of header
  
+--- flex-2.5.31/doc/flex.texi~	2005-12-25 19:53:23.925467592 +0100
++++ flex-2.5.31/doc/flex.texi	2005-12-25 19:59:09.244971048 +0100
+@@ -1672,7 +1672,7 @@
+     %%
+     expect-floats        BEGIN(expect);
+ 
+-    <expect>[0-9]+@samp{.}[0-9]+      {
++    <expect>[0-9]+\.[0-9]+      {
+                 printf( "found a float, = %f\n",
+                         atof( yytext ) );
+                 }
+@@ -3318,7 +3318,7 @@
+     %option interactive
+     %option always-interactive
+ 
+-    @samp{^} beginning-of-line operator
++    ^ beginning-of-line operator
+     yymore()
+ @end verbatim
+ @end example
+@@ -3832,7 +3832,7 @@
+                 if(c == '\n')
+                     ++mylineno;
+ 
+-                else if(c == @samp{*})
++                else if(c == '*')
+                     {
+                     if((c = yyinput()) == '/')
+                         break;
