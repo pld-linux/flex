@@ -8,25 +8,20 @@ Summary(ru):	Быстрый генератор лексических анализаторов GNU
 Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
-Version:	2.5.31
-Release:	10
+Version:	2.5.33
+Release:	1
 License:	BSD-like
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/lex/%{name}-%{version}.tar.bz2
-# Source0-md5:	363dcc4afc917dc51306eb9d3de0152f
+Source0:	http://dl.sourceforge.net/flex/%{name}-%{version}.tar.bz2
+# Source0-md5:	343374a00b38d9e39d1158b71af37150
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
-Source2:	%{name}-pl.po
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-glibc22.patch
 Patch2:		%{name}-locale.patch
-Patch3:		%{name}-yymore-fix.patch
-Patch4:		%{name}-yytext_ptr-undefined.patch
 # patch #869230 (second version of bug #720983 fix)
-Patch5:		%{name}-m4-quotes.diff
-# based on patch #903352
-Patch6:		%{name}-posix.patch
-URL:		http://lex.sf.net/
+Patch3:		%{name}-m4-quotes.diff
+URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	bison
@@ -129,12 +124,6 @@ PrzykЁady dla fleksa.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-
-cp -f %{SOURCE2} po/pl.po
-echo 'pl' >> po/LINGUAS
 
 # force regeneration (just in case make didn't want to)
 rm -f skel.c
