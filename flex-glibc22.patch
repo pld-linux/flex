@@ -27,17 +27,19 @@ diff -Nur flex-2.5.31.orig/flex.skl flex-2.5.31/flex.skl
  /* Initializes or reinitializes a buffer.
   * This function is sometimes called more than once on the same buffer,
   * such as during a yyrestart() or at EOF.
-diff -Nur flex-2.5.31.orig/scan.c flex-2.5.31/scan.c
---- flex-2.5.31.orig/scan.c	2003-04-01 18:33:17.000000000 +0200
-+++ flex-2.5.31/scan.c	2003-06-19 00:40:14.000000000 +0200
-@@ -3897,10 +3897,6 @@
- 	yyfree((void *) b  );
- }
+--- flex-2.5.33/scan.c.orig	2006-02-21 03:45:51.000000000 +0100
++++ flex-2.5.33/scan.c	2006-03-07 23:16:54.545169500 +0100
+@@ -4177,13 +4177,6 @@
  
+ 
+ 
+-#ifndef YY_ALWAYS_INTERACTIVE
+-#ifndef YY_NEVER_INTERACTIVE
 -#ifndef __cplusplus
--extern int isatty (int );
+-extern int isatty YY_PARAMS(( int ));
 -#endif /* __cplusplus */
--    
- /* Initializes or reinitializes a buffer.
-  * This function is sometimes called more than once on the same buffer,
-  * such as during a yyrestart() or at EOF.
+-#endif /* !YY_NEVER_INTERACTIVE */
+-#endif /* !YY_ALWAYS_INTERACTIVE */
+ 
+ 
+ 
