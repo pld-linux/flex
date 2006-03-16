@@ -1,0 +1,4 @@
+- updated to 2.5.33 (fixes CVE-2006-0975, CVE-2006-0459)
+- updated glibc22,locale patches, removed obsolete yymore-fix,yytext_ptr,posix
+  patches and pl.po
+- new URLs
