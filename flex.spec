@@ -9,7 +9,7 @@ Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
 Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
 Name:		flex
 Version:	2.5.33
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/flex/%{name}-%{version}.tar.bz2
@@ -32,6 +32,10 @@ BuildRequires:	help2man
 BuildRequires:	texinfo
 BuildRequires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		specflags_amd64		-fPIC
+%define		specflags_ia32e		-fPIC
+%define		specflags_x86_64	-fPIC
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
