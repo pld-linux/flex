@@ -1,12 +1,12 @@
 Summary:	GNU fast lexical analyzer generator
-Summary(de):	GNU - schneller lexikalischer Analysegenerator
-Summary(es):	Generador rАpido de analizadores lИxicos de la GNU
-Summary(fr):	GИnИrateur rapide d'analyseur lexical de GNU
-Summary(pl):	Szybki generator analizatora skЁadni GNU (flex)
-Summary(pt_BR):	Gerador rАpido de analisadores lИxicos da GNU
-Summary(ru):	Быстрый генератор лексических анализаторов GNU
-Summary(tr):	GNU sЖzdizim ГЖzЭmleyici
-Summary(uk):	Швидкий генератор лексичних анал╕затор╕в GNU
+Summary(de.UTF-8):   GNU - schneller lexikalischer Analysegenerator
+Summary(es.UTF-8):   Generador rц║pido de analizadores lц╘xicos de la GNU
+Summary(fr.UTF-8):   Gц╘nц╘rateur rapide d'analyseur lexical de GNU
+Summary(pl.UTF-8):   Szybki generator analizatora skе┌adni GNU (flex)
+Summary(pt_BR.UTF-8):   Gerador rц║pido de analisadores lц╘xicos da GNU
+Summary(ru.UTF-8):   п▒я▀я│я┌я─я▀п╧ пЁп╣п╫п╣я─п╟я┌п╬я─ п╩п╣п╨я│п╦я┤п╣я│п╨п╦я┘ п╟п╫п╟п╩п╦п╥п╟я┌п╬я─п╬п╡ GNU
+Summary(tr.UTF-8):   GNU sц╤zdizim ц╖ц╤zц╪mleyici
+Summary(uk.UTF-8):   п╗п╡п╦п╢п╨п╦п╧ пЁп╣п╫п╣я─п╟я┌п╬я─ п╩п╣п╨я│п╦я┤п╫п╦я┘ п╟п╫п╟п╩я√п╥п╟я┌п╬я─я√п╡ GNU
 Name:		flex
 Version:	2.5.33
 Release:	2
@@ -43,84 +43,84 @@ tokenizing code based on a lexical (regular expression based)
 description of the input. It is designed to work with both yacc and
 bison, and is used by many programs as part of their build process.
 
-%description -l de
+%description -l de.UTF-8
 GNU, der schnelle lexikalische Analysengenerator. Er erzeugt
 lexikalischen Token-Code, basierend auf einer lexikalischen
-Beschreibung (regulДre Ausdrucksbasis) der Eingabe. Ausgelegt zum
+Beschreibung (regulц╓re Ausdrucksbasis) der Eingabe. Ausgelegt zum
 Arbeiten mit yacc und bison, wird er von vielen Programmen als Teil
 des Build-Vorgangs verwendet.
 
-%description -l es
-Este es el creador GNU de anАlisis lИxica rАpida. Crea cСdigos lИxicos
-tokenizados basados en una descripciСn lИxica (basado en expresiones
-regulares) de la entrada. EstА designado a trabajar tanto con yacc
+%description -l es.UTF-8
+Este es el creador GNU de anц║lisis lц╘xica rц║pida. Crea cцЁdigos lц╘xicos
+tokenizados basados en una descripciцЁn lц╘xica (basado en expresiones
+regulares) de la entrada. Estц║ designado a trabajar tanto con yacc
 como con bison, y se utiliza en varios programas como parte del su
-proceso de programaciСn.
+proceso de programaciцЁn.
 
-%description -l fr
-GИnИrateur rapide d'analyseur lexical de GNU. Il gИnХre du code
-lexical sous forme de tokens basИ sur une description lexicale (basИ
-sur les expressions rationnelles) de son entrИe. Il est conГu pour
-fonctionner avec yacc et bison, et est utilisИ par de nombreux
+%description -l fr.UTF-8
+Gц╘nц╘rateur rapide d'analyseur lexical de GNU. Il gц╘nц╗re du code
+lexical sous forme de tokens basц╘ sur une description lexicale (basц╘
+sur les expressions rationnelles) de son entrц╘e. Il est conц╖u pour
+fonctionner avec yacc et bison, et est utilisц╘ par de nombreux
 programmes comme faisant partie de leur phase de construction.
 
-%description -l pl
-GNU flex sЁu©y do tworzenia programu analizy leksykalnej na podstawie
-wyra©eЯ regularnych i dyrektyw C zawartych w jednym lub wiЙcej plikach
-wej╤ciowych. Przeznaczony do wspСЁpracy z parserami yacc i bison, jest
-u©ywany przez wiele programСw w procesie kompilacji.
+%description -l pl.UTF-8
+GNU flex sе┌uе╪y do tworzenia programu analizy leksykalnej na podstawie
+wyraе╪eе└ regularnych i dyrektyw C zawartych w jednym lub wiд≥cej plikach
+wejе⌡ciowych. Przeznaczony do wspцЁе┌pracy z parserami yacc i bison, jest
+uе╪ywany przez wiele programцЁw w procesie kompilacji.
 
-%description -l pt_BR
-Este И o gerador GNU de anАlise lИxica rАpida. Ele gera cСdigos
-lИxicos tokenizados baseados em uma descriГЦo lИxica (baseado em
-expressУes regulares) da entrada. Ele И designado para trabalhar tanto
-com yacc como com bison, e И utilizado em vАrios programas como parte
-do seu processo de programaГЦo.
+%description -l pt_BR.UTF-8
+Este ц╘ o gerador GNU de anц║lise lц╘xica rц║pida. Ele gera cцЁdigos
+lц╘xicos tokenizados baseados em uma descriц╖цёo lц╘xica (baseado em
+expressц╣es regulares) da entrada. Ele ц╘ designado para trabalhar tanto
+com yacc como com bison, e ц╘ utilizado em vц║rios programas como parte
+do seu processo de programaц╖цёo.
 
-%description -l ru
-Программа flex генерирует сканнеры. Сканнеры - это программы,
-способные распознавать лексические шаблоны в тексте. flex принимает на
-входе пару регулярных выражений и C код и генерирует исходные файлы на
-языке C. Исходный файл компилируется и связывается с библиотекой для
-создания исполняемого файла, который будет просматривать свой входной
-поток данных в поиске регулярных выражений. При нахождении будет
-исполняться заданный C код. flex был разработан для работы как с
-системой Yacc, так и Bison, и используется многими программами как
-часть процесса их построения из исходных текстов.
+%description -l ru.UTF-8
+п÷я─п╬пЁя─п╟п╪п╪п╟ flex пЁп╣п╫п╣я─п╦я─я┐п╣я┌ я│п╨п╟п╫п╫п╣я─я▀. п║п╨п╟п╫п╫п╣я─я▀ - я█я┌п╬ п©я─п╬пЁя─п╟п╪п╪я▀,
+я│п©п╬я│п╬п╠п╫я▀п╣ я─п╟я│п©п╬п╥п╫п╟п╡п╟я┌я▄ п╩п╣п╨я│п╦я┤п╣я│п╨п╦п╣ я┬п╟п╠п╩п╬п╫я▀ п╡ я┌п╣п╨я│я┌п╣. flex п©я─п╦п╫п╦п╪п╟п╣я┌ п╫п╟
+п╡я┘п╬п╢п╣ п©п╟я─я┐ я─п╣пЁя┐п╩я▐я─п╫я▀я┘ п╡я▀я─п╟п╤п╣п╫п╦п╧ п╦ C п╨п╬п╢ п╦ пЁп╣п╫п╣я─п╦я─я┐п╣я┌ п╦я│я┘п╬п╢п╫я▀п╣ я└п╟п╧п╩я▀ п╫п╟
+я▐п╥я▀п╨п╣ C. п≤я│я┘п╬п╢п╫я▀п╧ я└п╟п╧п╩ п╨п╬п╪п©п╦п╩п╦я─я┐п╣я┌я│я▐ п╦ я│п╡я▐п╥я▀п╡п╟п╣я┌я│я▐ я│ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╬п╧ п╢п╩я▐
+я│п╬п╥п╢п╟п╫п╦я▐ п╦я│п©п╬п╩п╫я▐п╣п╪п╬пЁп╬ я└п╟п╧п╩п╟, п╨п╬я┌п╬я─я▀п╧ п╠я┐п╢п╣я┌ п©я─п╬я│п╪п╟я┌я─п╦п╡п╟я┌я▄ я│п╡п╬п╧ п╡я┘п╬п╢п╫п╬п╧
+п©п╬я┌п╬п╨ п╢п╟п╫п╫я▀я┘ п╡ п©п╬п╦я│п╨п╣ я─п╣пЁя┐п╩я▐я─п╫я▀я┘ п╡я▀я─п╟п╤п╣п╫п╦п╧. п÷я─п╦ п╫п╟я┘п╬п╤п╢п╣п╫п╦п╦ п╠я┐п╢п╣я┌
+п╦я│п©п╬п╩п╫я▐я┌я▄я│я▐ п╥п╟п╢п╟п╫п╫я▀п╧ C п╨п╬п╢. flex п╠я▀п╩ я─п╟п╥я─п╟п╠п╬я┌п╟п╫ п╢п╩я▐ я─п╟п╠п╬я┌я▀ п╨п╟п╨ я│
+я│п╦я│я┌п╣п╪п╬п╧ Yacc, я┌п╟п╨ п╦ Bison, п╦ п╦я│п©п╬п╩я▄п╥я┐п╣я┌я│я▐ п╪п╫п╬пЁп╦п╪п╦ п©я─п╬пЁя─п╟п╪п╪п╟п╪п╦ п╨п╟п╨
+я┤п╟я│я┌я▄ п©я─п╬я├п╣я│я│п╟ п╦я┘ п©п╬я│я┌я─п╬п╣п╫п╦я▐ п╦п╥ п╦я│я┘п╬п╢п╫я▀я┘ я┌п╣п╨я│я┌п╬п╡.
 
-Вам следует установить flex, если вы собираетесь использовать свою
-систему для разработки программ.
+п▓п╟п╪ я│п╩п╣п╢я┐п╣я┌ я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ flex, п╣я│п╩п╦ п╡я▀ я│п╬п╠п╦я─п╟п╣я┌п╣я│я▄ п╦я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я│п╡п╬я▌
+я│п╦я│я┌п╣п╪я┐ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪.
 
-%description -l tr
-Bu paket, giriЧ olarak okuduПu bilgiyi kendisine dЭzgЭn deyimler
-olarak belirtilen kurallar ГerГevesinde birimlere bЖler. yacc ve bison
-paketleri ile birlikte ГalЩЧacak Чekilde tasarlanmЩЧtЩr. Pek Гok
-programЩn derlenme aЧamasЩnda kullanЩlЩr.
+%description -l tr.UTF-8
+Bu paket, giriе÷ olarak okuduд÷u bilgiyi kendisine dц╪zgц╪n deyimler
+olarak belirtilen kurallar ц╖erц╖evesinde birimlere bц╤ler. yacc ve bison
+paketleri ile birlikte ц╖alд╠е÷acak е÷ekilde tasarlanmд╠е÷tд╠r. Pek ц╖ok
+programд╠n derlenme aе÷amasд╠nda kullanд╠lд╠r.
 
-%description -l uk
-Програма flex генеру╓ сканери. Сканери - це програми, як╕ можуть
-розп╕знавати лексичн╕ шаблони в текст╕. flex прийма╓ на вход╕ пару
-регулярних вираз╕в та C код та генеру╓ вих╕дн╕ файли на мов╕ C.
-Вих╕дний файл комп╕лю╓ться та зв'язу╓ться з б╕бл╕отекою для створення
-виконуваного файлу, що проглядатиме св╕й вх╕дний пот╕к даних в пошуку
-регулярних вираз╕в. При знаходженн╕ виконуватиметься заданий C код.
-flex був розроблений для роботи як з системою Yacc, так ╕ Bison, та
-використову╓ться багатьма програмами в процес╕ ╖х побудови з вих╕дних
-текст╕в.
+%description -l uk.UTF-8
+п÷я─п╬пЁя─п╟п╪п╟ flex пЁп╣п╫п╣я─я┐я■ я│п╨п╟п╫п╣я─п╦. п║п╨п╟п╫п╣я─п╦ - я├п╣ п©я─п╬пЁя─п╟п╪п╦, я▐п╨я√ п╪п╬п╤я┐я┌я▄
+я─п╬п╥п©я√п╥п╫п╟п╡п╟я┌п╦ п╩п╣п╨я│п╦я┤п╫я√ я┬п╟п╠п╩п╬п╫п╦ п╡ я┌п╣п╨я│я┌я√. flex п©я─п╦п╧п╪п╟я■ п╫п╟ п╡я┘п╬п╢я√ п©п╟я─я┐
+я─п╣пЁя┐п╩я▐я─п╫п╦я┘ п╡п╦я─п╟п╥я√п╡ я┌п╟ C п╨п╬п╢ я┌п╟ пЁп╣п╫п╣я─я┐я■ п╡п╦я┘я√п╢п╫я√ я└п╟п╧п╩п╦ п╫п╟ п╪п╬п╡я√ C.
+п▓п╦я┘я√п╢п╫п╦п╧ я└п╟п╧п╩ п╨п╬п╪п©я√п╩я▌я■я┌я▄я│я▐ я┌п╟ п╥п╡'я▐п╥я┐я■я┌я▄я│я▐ п╥ п╠я√п╠п╩я√п╬я┌п╣п╨п╬я▌ п╢п╩я▐ я│я┌п╡п╬я─п╣п╫п╫я▐
+п╡п╦п╨п╬п╫я┐п╡п╟п╫п╬пЁп╬ я└п╟п╧п╩я┐, я┴п╬ п©я─п╬пЁп╩я▐п╢п╟я┌п╦п╪п╣ я│п╡я√п╧ п╡я┘я√п╢п╫п╦п╧ п©п╬я┌я√п╨ п╢п╟п╫п╦я┘ п╡ п©п╬я┬я┐п╨я┐
+я─п╣пЁя┐п╩я▐я─п╫п╦я┘ п╡п╦я─п╟п╥я√п╡. п÷я─п╦ п╥п╫п╟я┘п╬п╢п╤п╣п╫п╫я√ п╡п╦п╨п╬п╫я┐п╡п╟я┌п╦п╪п╣я┌я▄я│я▐ п╥п╟п╢п╟п╫п╦п╧ C п╨п╬п╢.
+flex п╠я┐п╡ я─п╬п╥я─п╬п╠п╩п╣п╫п╦п╧ п╢п╩я▐ я─п╬п╠п╬я┌п╦ я▐п╨ п╥ я│п╦я│я┌п╣п╪п╬я▌ Yacc, я┌п╟п╨ я√ Bison, я┌п╟
+п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я■я┌я▄я│я▐ п╠п╟пЁп╟я┌я▄п╪п╟ п©я─п╬пЁя─п╟п╪п╟п╪п╦ п╡ п©я─п╬я├п╣я│я√ я≈я┘ п©п╬п╠я┐п╢п╬п╡п╦ п╥ п╡п╦я┘я√п╢п╫п╦я┘
+я┌п╣п╨я│я┌я√п╡.
 
-Вам сл╕д встановити flex, якщо ви збира╓тесь використовувати свою
-систему для розробки програм.
+п▓п╟п╪ я│п╩я√п╢ п╡я│я┌п╟п╫п╬п╡п╦я┌п╦ flex, я▐п╨я┴п╬ п╡п╦ п╥п╠п╦я─п╟я■я┌п╣я│я▄ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐п╡п╟я┌п╦ я│п╡п╬я▌
+я│п╦я│я┌п╣п╪я┐ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪.
 
 %package examples
 Summary:	Flex examples
-Summary(pl):	PrzykЁady dla fleksa
+Summary(pl.UTF-8):   Przykе┌ady dla fleksa
 Group:		Development/Tools
 
 %description examples
 Flex examples.
 
-%description examples -l pl
-PrzykЁady dla fleksa.
+%description examples -l pl.UTF-8
+Przykе┌ady dla fleksa.
 
 %prep
 %setup -q
