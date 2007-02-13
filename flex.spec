@@ -1,12 +1,12 @@
 Summary:	GNU fast lexical analyzer generator
-Summary(de.UTF-8):   GNU - schneller lexikalischer Analysegenerator
-Summary(es.UTF-8):   Generador rápido de analizadores léxicos de la GNU
-Summary(fr.UTF-8):   Générateur rapide d'analyseur lexical de GNU
-Summary(pl.UTF-8):   Szybki generator analizatora składni GNU (flex)
-Summary(pt_BR.UTF-8):   Gerador rápido de analisadores léxicos da GNU
-Summary(ru.UTF-8):   Быстрый генератор лексических анализаторов GNU
-Summary(tr.UTF-8):   GNU sözdizim çözümleyici
-Summary(uk.UTF-8):   Швидкий генератор лексичних аналізаторів GNU
+Summary(de.UTF-8):	GNU - schneller lexikalischer Analysegenerator
+Summary(es.UTF-8):	Generador rápido de analizadores léxicos de la GNU
+Summary(fr.UTF-8):	Générateur rapide d'analyseur lexical de GNU
+Summary(pl.UTF-8):	Szybki generator analizatora składni GNU (flex)
+Summary(pt_BR.UTF-8):	Gerador rápido de analisadores léxicos da GNU
+Summary(ru.UTF-8):	Быстрый генератор лексических анализаторов GNU
+Summary(tr.UTF-8):	GNU sözdizim çözümleyici
+Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
 Version:	2.5.33
 Release:	2
@@ -113,7 +113,7 @@ flex був розроблений для роботи як з системою 
 
 %package examples
 Summary:	Flex examples
-Summary(pl.UTF-8):   Przykłady dla fleksa
+Summary(pl.UTF-8):	Przykłady dla fleksa
 Group:		Development/Tools
 
 %description examples
