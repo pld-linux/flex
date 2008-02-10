@@ -1,3 +1,4 @@
+# NOTE: don't use 2.5.34, it's too broken
 Summary:	GNU fast lexical analyzer generator
 Summary(de.UTF-8):	GNU - schneller lexikalischer Analysegenerator
 Summary(es.UTF-8):	Generador rápido de analizadores léxicos de la GNU
