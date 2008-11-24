@@ -32,6 +32,7 @@ BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	help2man
 BuildRequires:	texinfo
 BuildRequires:	util-linux
+Requires:	m4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags_amd64		-fPIC
