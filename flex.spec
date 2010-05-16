@@ -1,4 +1,4 @@
-# NOTE: don't use 2.5.34, it's too broken
+# NOTE: don't use 2.5.34, it's too broken? is 2.5.35 ok? how to test?
 Summary:	GNU fast lexical analyzer generator
 Summary(de.UTF-8):	GNU - schneller lexikalischer Analysegenerator
 Summary(es.UTF-8):	Generador rápido de analizadores léxicos de la GNU
@@ -9,19 +9,18 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.5.33
-Release:	4
+Version:	2.5.35
+Release:	0.1
 License:	BSD-like
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/flex/%{name}-%{version}.tar.bz2
-# Source0-md5:	343374a00b38d9e39d1158b71af37150
+Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
+# Source0-md5:	10714e50cea54dc7a227e3eddcd44d57
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-glibc22.patch
 Patch2:		%{name}-locale.patch
 # patch #869230 (second version of bug #720983 fix)
-Patch3:		%{name}-m4-quotes.diff
+#Patch3:	%{name}-m4-quotes.diff
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
@@ -127,9 +126,8 @@ Przykłady dla fleksa.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#%patch3 -p1
 
 # force regeneration (just in case make didn't want to)
 rm -f skel.c
@@ -157,9 +155,12 @@ ln -sf flex $RPM_BUILD_ROOT%{_bindir}/flex++
 
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++.1
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex.1
-bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-cp -Rf examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+rm -f $RPM_BUILD_ROOT%{_mandir}/README.flex-non-english-man-pages
+
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %find_lang %{name}
 
