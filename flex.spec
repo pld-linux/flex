@@ -1,4 +1,6 @@
 # NOTE: don't use 2.5.34, it's too broken? is 2.5.35 ok? how to test?
+# NOTE: 2.5.35+ can't deal with "[[" "]]" strings in sources, needs workarounds like space separation
+#       (or update of m4-quotes patch)
 Summary:	GNU fast lexical analyzer generator
 Summary(de.UTF-8):	GNU - schneller lexikalischer Analysegenerator
 Summary(es.UTF-8):	Generador rápido de analizadores léxicos de la GNU
@@ -18,25 +20,27 @@ Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
-Patch2:		%{name}-locale.patch
-# patch #869230 (second version of bug #720983 fix)
-#Patch3:	%{name}-m4-quotes.diff
+Patch1:		%{name}-locale.patch
+Patch2:		%{name}-gcc44.patch
+Patch3:		%{name}-missing-prototypes.patch
+Patch4:		%{name}-sign.patch
+# patch #869230 (second version of bug #720983 fix - from flex BTS)
+# outdated as for 2.5.34+, but contains testcase
+Patch5:		%{name}-m4-quotes.diff
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	bison
-# m4-quotes* patches require rebuilding *.c from scan.l
-BuildRequires:	flex
+# to rebuild scan.c from scan.l (m4-quotes patch)
+#BuildRequires:	flex
 BuildRequires:	gettext-devel >= 0.11.5
 BuildRequires:	help2man
+# to rebuild skel.c from patched flex.skl
+BuildRequires:	m4
 BuildRequires:	texinfo
 BuildRequires:	util-linux
 Requires:	m4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		specflags_amd64		-fPIC
-%define		specflags_ia32e		-fPIC
-%define		specflags_x86_64	-fPIC
 
 %description
 This is the GNU fast lexical analyzer generator. It generates lexical
@@ -126,8 +130,11 @@ Przykłady dla fleksa.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+%patch3 -p1
+%patch4 -p1
+#%patch5 -p1
 
 # force regeneration (just in case make didn't want to)
 rm -f skel.c
@@ -167,23 +174,28 @@ cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/flex
+%attr(755,root,root) %{_bindir}/flex++
+%attr(755,root,root) %{_bindir}/lex
+%{_mandir}/man1/flex.1*
+%{_mandir}/man1/flex++.1*
+%{_mandir}/man1/lex.1*
 %lang(es) %{_mandir}/es/man1/*
 %lang(ja) %{_mandir}/ja/man1/*
 %lang(pl) %{_mandir}/pl/man1/*
-%{_infodir}/flex*
-%{_libdir}/*.a
-%{_includedir}/*.h
+%{_infodir}/flex.info*
+%{_libdir}/libfl.a
+%{_libdir}/libfl_pic.a
+%{_includedir}/FlexLexer.h
 
 %files examples
 %defattr(644,root,root,755)
