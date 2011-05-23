@@ -1,4 +1,3 @@
-# NOTE: don't use 2.5.34, it's too broken? is 2.5.35 ok? how to test?
 # NOTE: 2.5.35+ can't deal with "[[" "]]" strings in sources, needs workarounds like space separation
 #       (or update of m4-quotes patch)
 Summary:	GNU fast lexical analyzer generator
@@ -12,7 +11,7 @@ Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
 Version:	2.5.35
-Release:	0.1
+Release:	1
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
