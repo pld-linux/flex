@@ -10,29 +10,27 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.5.35
+Version:	2.5.37
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
-# Source0-md5:	10714e50cea54dc7a227e3eddcd44d57
+# Source0-md5:	c75940e1fc25108f2a7b3ef42abdae06
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-locale.patch
 Patch2:		%{name}-gcc44.patch
-Patch3:		%{name}-missing-prototypes.patch
-Patch4:		%{name}-sign.patch
 # patch #869230 (second version of bug #720983 fix - from flex BTS)
 # outdated as for 2.5.34+, but contains testcase
-Patch5:		%{name}-m4-quotes.diff
+Patch3:		%{name}-m4-quotes.diff
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	bison
 # to rebuild scan.c from scan.l (m4-quotes patch)
 #BuildRequires:	flex
-BuildRequires:	gettext-devel >= 0.11.5
+BuildRequires:	gettext-devel >= 0.12
 BuildRequires:	help2man
 # to rebuild skel.c from patched flex.skl
 BuildRequires:	m4
@@ -131,12 +129,10 @@ Przykłady dla fleksa.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-#%patch5 -p1
+#%patch3 -p1
 
 # force regeneration (just in case make didn't want to)
-rm -f skel.c
+%{__rm} skel.c
 
 %build
 %{__gettextize}
@@ -163,8 +159,9 @@ echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/flex++.1
 echo .so flex.1 > $RPM_BUILD_ROOT%{_mandir}/man1/lex.1
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/README.flex-non-english-man-pages
+
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
-rm -f $RPM_BUILD_ROOT%{_mandir}/README.flex-non-english-man-pages
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
