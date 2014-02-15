@@ -172,6 +172,8 @@ cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 # no external dependencies
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{zh_tw,zh_TW}
+
 %find_lang %{name}
 
 %clean
