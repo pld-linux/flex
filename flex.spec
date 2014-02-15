@@ -1,5 +1,11 @@
 # NOTE: 2.5.35+ can't deal with "[[" "]]" strings in sources, needs workarounds like space separation
-#       (or update of m4-quotes patch)
+#	(or non-trivial update of m4-quotes patch)
+# NOTE on shared libfl:
+#	It exports two functions, yywrap() and main();
+#	- because of the latter, unnecessary linking with shared -lfl would harm,
+#	  so it would require large cleanup of other projects;
+#	- when some code wants yywrap(), but no main(), using shared libfl is NOT POSSIBLE.
+#	Thus, shared libfl would be of little use.
 Summary:	GNU fast lexical analyzer generator
 Summary(de.UTF-8):	GNU - schneller lexikalischer Analysegenerator
 Summary(es.UTF-8):	Generador rápido de analizadores léxicos de la GNU
@@ -10,20 +16,19 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.5.37
+Version:	2.5.38
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
-# Source0-md5:	c75940e1fc25108f2a7b3ef42abdae06
+# Source0-md5:	b230c88e65996ff74994d08a2a2e0f27
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-locale.patch
-Patch2:		%{name}-gcc44.patch
+Patch1:		%{name}-pic.patch
 # patch #869230 (second version of bug #720983 fix - from flex BTS)
 # outdated as for 2.5.34+, but contains testcase
-Patch3:		%{name}-m4-quotes.diff
+Patch2:		%{name}-m4-quotes.diff
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.10
@@ -128,8 +133,7 @@ Przykłady dla fleksa.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-#%patch3 -p1
+#%patch2 -p1
 
 # force regeneration (just in case make didn't want to)
 %{__rm} skel.c
@@ -140,13 +144,13 @@ Przykłady dla fleksa.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-shared
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
@@ -164,6 +168,9 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+# no external dependencies
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
 %find_lang %{name}
 
@@ -192,6 +199,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libfl.a
 %{_libdir}/libfl_pic.a
 %{_includedir}/FlexLexer.h
+
+%if 0
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libfl.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libfl.so.2
+%attr(755,root,root) %{_libdir}/libfl_pic.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libfl_pic.so.2
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libfl.so
+%attr(755,root,root) %{_libdir}/libfl_pic.so
+%endif
 
 %files examples
 %defattr(644,root,root,755)
