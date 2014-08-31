@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.5.38
+Version:	2.5.39
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
-Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.bz2
-# Source0-md5:	b230c88e65996ff74994d08a2a2e0f27
+Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.xz
+# Source0-md5:	477679c37ff8b28248a9b05f1da29a82
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
@@ -35,12 +35,15 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	bison
 # to rebuild scan.c from scan.l (m4-quotes patch)
 #BuildRequires:	flex
-BuildRequires:	gettext-devel >= 0.12
+BuildRequires:	gettext-devel >= 0.18.1
 BuildRequires:	help2man
+BuildRequires:	libtool >= 2:2
 # to rebuild skel.c from patched flex.skl
 BuildRequires:	m4
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	util-linux
+BuildRequires:	xz
 Requires:	m4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -140,6 +143,7 @@ Przykłady dla fleksa.
 
 %build
 %{__gettextize}
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
@@ -171,8 +175,6 @@ cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # no external dependencies
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
-
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/{zh_tw,zh_TW}
 
 %find_lang %{name}
 
