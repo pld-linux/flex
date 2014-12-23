@@ -192,7 +192,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO
+%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO doc/flex.pdf
 %attr(755,root,root) %{_bindir}/flex
 %attr(755,root,root) %{_bindir}/flex++
 %attr(755,root,root) %{_bindir}/lex
