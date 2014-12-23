@@ -35,13 +35,16 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	bison
 # to rebuild scan.c from scan.l (m4-quotes patch)
 #BuildRequires:	flex
-BuildRequires:	gettext-devel >= 0.18.1
+BuildRequires:	gettext-tools >= 0.18.1
 BuildRequires:	help2man
 BuildRequires:	libtool >= 2:2
 # to rebuild skel.c from patched flex.skl
 BuildRequires:	m4
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
+BuildRequires:	texinfo-texi2dvi
+BuildRequires:	texlive-fonts-cmsuper
+BuildRequires:	texlive-pdftex
 BuildRequires:	util-linux
 BuildRequires:	xz
 Requires:	m4
