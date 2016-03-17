@@ -1,9 +1,9 @@
---- flex-2.5.38/Makefile.am.orig	2013-05-28 23:56:49.000000000 +0200
-+++ flex-2.5.38/Makefile.am	2014-02-15 11:43:17.418862008 +0100
-@@ -80,6 +80,7 @@
+--- flex-2.6.0/src/Makefile.am.orig	2015-11-13 20:32:53.000000000 +0100
++++ flex-2.6.0/src/Makefile.am	2016-03-17 18:05:55.876418330 +0100
+@@ -46,6 +46,7 @@
  	libyywrap.c
  
- libfl_pic_la_LDFLAGS = -no-undefined -version-info @SHARED_VERSION_INFO@
+ libfl_pic_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
 +libfl_pic_la_CFLAGS = -fPIC
  
  noinst_HEADERS = \

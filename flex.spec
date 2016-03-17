@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.5.39
-Release:	2
+Version:	2.6.0
+Release:	1
 License:	BSD-like
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.xz
-# Source0-md5:	477679c37ff8b28248a9b05f1da29a82
+# Source0-md5:	3cbbfa1554d0b75fad9f8100732454de
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
@@ -31,11 +31,11 @@ Patch1:		%{name}-pic.patch
 Patch2:		%{name}-m4-quotes.diff
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
-BuildRequires:	automake >= 1:1.10
+BuildRequires:	automake >= 1:1.14.1
 BuildRequires:	bison
 # to rebuild scan.c from scan.l (m4-quotes patch)
 #BuildRequires:	flex
-BuildRequires:	gettext-tools >= 0.18.1
+BuildRequires:	gettext-tools >= 0.19
 BuildRequires:	help2man
 BuildRequires:	libtool >= 2:2
 # to rebuild skel.c from patched flex.skl
@@ -142,7 +142,7 @@ Przykłady dla fleksa.
 #%patch2 -p1
 
 # force regeneration (just in case make didn't want to)
-%{__rm} skel.c
+%{__rm} src/skel.c
 
 %build
 %{__gettextize}
