@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.6.0
+Version:	2.6.2
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
-Source0:	http://downloads.sourceforge.net/flex/%{name}-%{version}.tar.xz
-# Source0-md5:	3cbbfa1554d0b75fad9f8100732454de
+Source0:	https://github.com/westes/flex/archive/v%{version}.tar.gz
+# Source0-md5:	acde3a89ef2b376aac94586fd5fda460
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
@@ -29,6 +29,7 @@ Patch1:		%{name}-pic.patch
 # patch #869230 (second version of bug #720983 fix - from flex BTS)
 # outdated as for 2.5.34+, but contains testcase
 Patch2:		%{name}-m4-quotes.diff
+Patch3:		%{name}-build.patch
 URL:		http://flex.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.14.1
@@ -140,9 +141,10 @@ Przykłady dla fleksa.
 %patch0 -p1
 %patch1 -p1
 #%patch2 -p1
+%patch3 -p1
 
 # force regeneration (just in case make didn't want to)
-%{__rm} src/skel.c
+%{__rm} -f src/skel.c
 
 %build
 %{__gettextize}
@@ -192,7 +194,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS TODO doc/flex.pdf
+%doc AUTHORS COPYING NEWS README.md THANKS
 %attr(755,root,root) %{_bindir}/flex
 %attr(755,root,root) %{_bindir}/flex++
 %attr(755,root,root) %{_bindir}/lex

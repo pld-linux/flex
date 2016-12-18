@@ -1,0 +1,10 @@
+--- a/configure.ac~	2016-10-25 00:29:36.000000000 +0200
++++ b/configure.ac	2016-12-18 14:55:43.302082497 +0100
+@@ -151,7 +151,6 @@ examples/Makefile
+ examples/fastwc/Makefile
+ examples/manual/Makefile
+ lib/Makefile
+-po/Makefile.in
+ src/Makefile
+ tools/Makefile
+ tests/Makefile
