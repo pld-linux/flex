@@ -1,5 +1,3 @@
-# NOTE: 2.5.35+ can't deal with "[[" "]]" strings in sources, needs workarounds like space separation
-#	(or non-trivial update of m4-quotes patch)
 # NOTE on shared libfl:
 #	It exports two functions, yywrap() and main();
 #	- because of the latter, unnecessary linking with shared -lfl would harm,
@@ -20,17 +18,17 @@ Version:	2.6.2
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
+#Source0Download: https://github.com/westes/flex/releases
+# TODO: when upgrading, switch to
+#Source0:	https://github.com/westes/flex/releases/download/v%{version}/%{name}-%{version}.tar.lz
 Source0:	https://github.com/westes/flex/archive/v%{version}.tar.gz
 # Source0-md5:	acde3a89ef2b376aac94586fd5fda460
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-pic.patch
-# patch #869230 (second version of bug #720983 fix - from flex BTS)
-# outdated as for 2.5.34+, but contains testcase
-Patch2:		%{name}-m4-quotes.diff
-Patch3:		%{name}-build.patch
-URL:		http://flex.sourceforge.net/
+Patch2:		%{name}-build.patch
+URL:		https://github.com/westes/flex
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.14.1
 BuildRequires:	bison
@@ -140,8 +138,7 @@ Przykłady dla fleksa.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1
-%patch3 -p1
+%patch2 -p1
 
 # force regeneration (just in case make didn't want to)
 %{__rm} -f src/skel.c
