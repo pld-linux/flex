@@ -14,7 +14,7 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.6.2
+Version:	2.6.3
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
@@ -22,12 +22,11 @@ Group:		Development/Tools
 # TODO: when upgrading, switch to
 #Source0:	https://github.com/westes/flex/releases/download/v%{version}/%{name}-%{version}.tar.lz
 Source0:	https://github.com/westes/flex/archive/v%{version}.tar.gz
-# Source0-md5:	acde3a89ef2b376aac94586fd5fda460
+# Source0-md5:	5a399c7948b0278457392c2fd4f8739f
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-pic.patch
-Patch2:		%{name}-build.patch
+Patch1:		%{name}-build.patch
 URL:		https://github.com/westes/flex
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.14.1
@@ -138,7 +137,6 @@ Przykłady dla fleksa.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # force regeneration (just in case make didn't want to)
 %{__rm} -f src/skel.c
@@ -203,7 +201,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/*
 %{_infodir}/flex.info*
 %{_libdir}/libfl.a
-%{_libdir}/libfl_pic.a
 %{_includedir}/FlexLexer.h
 
 %if 0
@@ -211,13 +208,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libfl.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libfl.so.2
-%attr(755,root,root) %{_libdir}/libfl_pic.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libfl_pic.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libfl.so
-%attr(755,root,root) %{_libdir}/libfl_pic.so
 %endif
 
 %files examples
