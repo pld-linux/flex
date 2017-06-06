@@ -14,15 +14,15 @@ Summary(ru.UTF-8):	Быстрый генератор лексических ан
 Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
-Version:	2.6.3
+Version:	2.6.4
 Release:	1
 License:	BSD-like
 Group:		Development/Tools
 #Source0Download: https://github.com/westes/flex/releases
 # TODO: when upgrading, switch to
 #Source0:	https://github.com/westes/flex/releases/download/v%{version}/%{name}-%{version}.tar.lz
-Source0:	https://github.com/westes/flex/archive/v%{version}.tar.gz
-# Source0-md5:	5a399c7948b0278457392c2fd4f8739f
+Source0:	https://github.com/westes/flex/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	96828d1e36d18545b71a027caa6478dd
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
