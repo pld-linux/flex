@@ -27,6 +27,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	fd79ee2834b290e74c626f0bbfc8942f
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-build.patch
+Patch2:		%{name}-rh1389575.patch
 URL:		https://github.com/westes/flex
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.14.1
@@ -137,6 +138,7 @@ Przykłady dla fleksa.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # force regeneration (just in case make didn't want to)
 %{__rm} -f src/skel.c
