@@ -15,7 +15,7 @@ Summary(tr.UTF-8):	GNU sözdizim çözümleyici
 Summary(uk.UTF-8):	Швидкий генератор лексичних аналізаторів GNU
 Name:		flex
 Version:	2.6.4
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Development/Tools
 #Source0Download: https://github.com/westes/flex/releases
